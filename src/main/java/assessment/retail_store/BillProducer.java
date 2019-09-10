@@ -14,7 +14,7 @@ import assessment.retail_store.utils.Utility;
  *
  */
 public class BillProducer {
-
+	
 	/**
 	 * @param lineItem
 	 * @param discounter
@@ -44,11 +44,11 @@ public class BillProducer {
 		});
 		bill.setItems(lineItems);
 		bill.setTime(LocalDateTime.now());
-		bill.setSubTotal(lineItems.stream().mapToDouble(i-> i.getNetPrice()).sum());
+		bill.setSubTotal(lineItems.stream().mapToDouble(LineItem::getNetPrice).sum());
 		bill.setAdditionalDiscount(Math.floor(bill.getSubTotal() / 100) * 5);
 		bill.setNetPayableAmount(bill.getSubTotal() - bill.getAdditionalDiscount());
 		bill.setUserInfo(user);
-		// Display bill receipt
+		// Display bill receipt to the console
 		System.out.println(bill.toString());
 		
 		return bill.getNetPayableAmount();

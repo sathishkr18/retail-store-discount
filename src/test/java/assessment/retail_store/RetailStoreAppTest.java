@@ -3,6 +3,8 @@
  */
 package assessment.retail_store;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import org.junit.Test;
 
 import assessment.retail_store.beans.LineItem;
 import assessment.retail_store.beans.User;
+import assessment.retail_store.exceptions.RetailStoreDiscountException;
 import assessment.retail_store.utils.Utility;
 
 /**
@@ -28,9 +31,10 @@ public class RetailStoreAppTest {
 
 	/**
 	 * Test method for {@link assessment.retail_store.MainApp#main(java.lang.String[])}.
+	 * @throws RetailStoreDiscountException 
 	 */
 	@Test
-	public void testEmployeeUser() {
+	public void testEmployeeUser() throws RetailStoreDiscountException {
 		User user = Utility.loadUsers().get(0);
 		List<LineItem> list = new ArrayList<>();
 		
@@ -50,11 +54,12 @@ public class RetailStoreAppTest {
 		list.add(item3);
 		
 		RetailStoreApp retailStoreApp = new RetailStoreApp();
-		System.out.println(retailStoreApp.shop(user, list));
+		Double actual = retailStoreApp.shop(user, list);
+		assertEquals(new Double(542.0), actual);
 	}
 	
 	@Test
-	public void testAffiliateUser() {
+	public void testAffiliateUser() throws RetailStoreDiscountException {
 		User user = Utility.loadUsers().get(1);
 		List<LineItem> list = new ArrayList<>();
 		
@@ -74,11 +79,12 @@ public class RetailStoreAppTest {
 		list.add(item3);
 		
 		RetailStoreApp retailStoreApp = new RetailStoreApp();
-		System.out.println(retailStoreApp.shop(user, list));
+		Double actual = retailStoreApp.shop(user, list);
+		assertEquals(new Double(579.0), actual);
 	}
 	
 	@Test
-	public void testOldCustomerUser() {
+	public void testOldCustomerUser() throws RetailStoreDiscountException {
 		User user = Utility.loadUsers().get(2);
 		List<LineItem> list = new ArrayList<>();
 		
@@ -98,11 +104,12 @@ public class RetailStoreAppTest {
 		list.add(item3);
 		
 		RetailStoreApp retailStoreApp = new RetailStoreApp();
-		System.out.println(retailStoreApp.shop(user, list));
+		Double actual = retailStoreApp.shop(user, list);
+		assertEquals(new Double(589.5), actual);
 	}
 	
 	@Test
-	public void testNewCustomerUser() {
+	public void testNewCustomerUser() throws RetailStoreDiscountException {
 		User user = Utility.loadUsers().get(3);
 		List<LineItem> list = new ArrayList<>();
 		
@@ -122,17 +129,16 @@ public class RetailStoreAppTest {
 		list.add(item3);
 		
 		RetailStoreApp retailStoreApp = new RetailStoreApp();
-		System.out.println(retailStoreApp.shop(user, list));
+		Double actual = retailStoreApp.shop(user, list);
+		assertEquals(new Double(600.0), actual);
 	}
 	
-	@Test
-	public void testUserTypeException() {
+	@Test(expected = RetailStoreDiscountException.class)
+	public void testUserTypeException() throws RetailStoreDiscountException {
 		User user = new User();
 		List<LineItem> list = new ArrayList<>();
-			
-		
 		RetailStoreApp retailStoreApp = new RetailStoreApp();
-		System.out.println(retailStoreApp.shop(user, list));
+		retailStoreApp.shop(user, list);
 	}
 
 }

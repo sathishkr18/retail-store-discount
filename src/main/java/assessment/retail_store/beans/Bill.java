@@ -6,6 +6,8 @@ package assessment.retail_store.beans;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import assessment.retail_store.utils.Utility;
+
 /**
  * @author Sathish
  *
@@ -76,9 +78,9 @@ public class Bill {
 
 		StringBuilder str = new StringBuilder("\n\n");
 
-		str.append("\n-----------------------------------------------------------");
+		str.append(Utility.DOTTED_LINE);
 		str.append("\n                        Bill Receipt                       ");
-		str.append("\n-----------------------------------------------------------");
+		str.append(Utility.DOTTED_LINE);
 		str.append("\nBill Number: " + number);
 		str.append("\nBill Time: " + time);
 		str.append("\nUser Id: " + userInfo.getId());
@@ -93,7 +95,7 @@ public class Bill {
 		str.append("\n");
 		str.append("\nSubtotal after % discount: " + subTotal);
 		str.append("\nAdditional Discount: " + additionalDiscount);
-		str.append("\n-----------------------------------------------------------");
+		str.append(Utility.DOTTED_LINE);
 		str.append("\nNet Payable Amount: " + netPayableAmount + "\n\n");
 		return str.toString();
 	}

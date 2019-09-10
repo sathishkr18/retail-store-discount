@@ -8,5 +8,5 @@ package assessment.retail_store.enums;
  *
  */
 public enum UserType {
-	Employee, Affiliate, Customer
+	EMPLOYEE, AFFILIATE, CUSTOMER
 }

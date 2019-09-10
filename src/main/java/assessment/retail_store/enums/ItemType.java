@@ -5,5 +5,5 @@ package assessment.retail_store.enums;
  *
  */
 public enum ItemType {
-	Groceries, Electronics, Stationaries
+	GROCERIES, ELECTRONICS, STATIONARIES
 }
