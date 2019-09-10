@@ -89,14 +89,14 @@ public class Bill {
 		str.append("\n\n");
 		for (LineItem i : items) {
 			str.append("\n" + i.getItem().getId() + " " + i.getItem().getName() + "    "
-					+ i.getItem().getType().toString() + "    " + i.getItem().getPrice() + "    " + i.getQuantity()
-					+ "    " + i.getNetPrice() + "   ");
+					+ i.getItem().getType().toString() + "    $" + i.getItem().getPrice() + "    " + i.getQuantity()
+					+ "    $" + i.getNetPrice() + "   ");
 		}
 		str.append("\n");
-		str.append("\nSubtotal after % discount: " + subTotal);
-		str.append("\nAdditional Discount: " + additionalDiscount);
+		str.append("\nSubtotal after % discount: $" + subTotal);
+		str.append("\nAdditional Discount: $" + additionalDiscount);
 		str.append(Utility.DOTTED_LINE);
-		str.append("\nNet Payable Amount: " + netPayableAmount + "\n\n");
+		str.append("\nNet Payable Amount: $" + netPayableAmount + "\n\n");
 		return str.toString();
 	}
 
