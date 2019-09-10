@@ -6,8 +6,6 @@ package assessment.retail_store.exceptions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import assessment.retail_store.BillProducer;
-
 /**
  * @author Sathish
  *
